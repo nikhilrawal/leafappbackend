@@ -10,7 +10,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 warnings.filterwarnings("ignore")
 
-model = load_model('my_model.h5')
+# ✅ Fix: Load model with support for TFOpLambda
+model = load_model('my_model.h5', custom_objects={'TFOpLambda': lambda x: x})
 
 # Name of Classes
 target_names = ["Common_Rust","Gray_Leaf_Spot","Healthy","Blight"]
